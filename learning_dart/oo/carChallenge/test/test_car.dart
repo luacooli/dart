@@ -14,5 +14,7 @@ main() {
     print("Your speed is ${car1.speedDown()} km/h");
   }
 
+  car1.currentSpeed = 500;
+  car1.currentSpeed = 3;
   print("Your current speed is ${car1.currentSpeed} km/h. You are stopped!");
 }

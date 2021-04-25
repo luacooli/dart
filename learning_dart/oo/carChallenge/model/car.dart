@@ -1,30 +1,47 @@
 class Car {
+  // car proprieties
   final int maximumSpeed;
-  int currentSpeed = 0;
+  int _currentSpeed = 0;
 
-  Car([this.maximumSpeed = 320, this.currentSpeed]);
+  // contructor
+  Car([this.maximumSpeed = 320, this._currentSpeed]);
 
+  // get method
+  int get currentSpeed {
+    return this._currentSpeed;
+  }
+
+  // set method
+  void set currentSpeed(int newSpeed) {
+    bool speedDiff = (_currentSpeed - newSpeed).abs() <= 5;
+
+    if (speedDiff && newSpeed >= 0) {
+      this._currentSpeed = newSpeed;
+    }
+  }
+
+  // car methods
   int speedUp() {
-    if (currentSpeed + 5 >= maximumSpeed) {
-      currentSpeed = maximumSpeed;
+    if (_currentSpeed + 5 <= maximumSpeed) {
+      _currentSpeed = maximumSpeed;
     } else {
-      currentSpeed += 5;
+      _currentSpeed += 5;
     }
 
-    return currentSpeed;
+    return _currentSpeed;
   }
 
   int speedDown() {
-    if (currentSpeed - 5 <= 0) {
-      currentSpeed = 0;
+    if (_currentSpeed - 5 <= 0) {
+      _currentSpeed = 0;
     } else {
-      currentSpeed -= 5;
+      _currentSpeed -= 5;
     }
 
-    return currentSpeed;
+    return _currentSpeed;
   }
 
   bool isOnLimit() {
-    return currentSpeed == maximumSpeed;
+    return _currentSpeed == maximumSpeed;
   }
 }
